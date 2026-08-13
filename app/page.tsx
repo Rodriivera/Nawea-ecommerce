@@ -91,12 +91,11 @@ export default async function Home() {
         <div className="grain absolute inset-0">
           <video
             src={IMAGES.heroVideo}
-            poster={IMAGES.hero}
             autoPlay
             loop
             muted
             playsInline
-            preload="metadata"
+            preload="auto"
             className="absolute inset-0 h-full w-full object-cover object-center md:object-[60%_center]"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-background/85 via-background/25 to-transparent md:from-background/70 md:via-transparent" />
