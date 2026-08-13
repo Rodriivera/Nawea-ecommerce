@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Minus, Plus, X } from "lucide-react";
 import { useShop } from "@/store/shop";
 import { money } from "@/lib/format";
@@ -78,13 +79,14 @@ export function CartDrawer() {
                   <Link
                     href={`/producto/${p.slug}`}
                     onClick={() => setCartOpen(false)}
-                    className="block h-28 w-20 shrink-0 overflow-hidden bg-cream"
+                    className="relative block h-28 w-20 shrink-0 overflow-hidden bg-cream"
                   >
-                    <img
+                    <Image
                       src={p.image}
                       alt={p.name}
-                      loading="lazy"
-                      className="h-full w-full object-cover"
+                      fill
+                      sizes="80px"
+                      className="object-cover"
                     />
                   </Link>
                   <div className="flex min-w-0 flex-1 flex-col justify-between">

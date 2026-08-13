@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { SiteLayout } from "@/components/shop/SiteLayout";
 import { ProductCard } from "@/components/shop/ProductCard";
@@ -67,8 +68,10 @@ function SectionHead({
 }
 
 export default async function Home() {
-  const categories = await fetchCategoriesFromDb();
-  const allProducts = await fetchProductsFromDb();
+  const [categories, allProducts] = await Promise.all([
+    fetchCategoriesFromDb(),
+    fetchProductsFromDb(),
+  ]);
 
   const bestSellers = [...allProducts].sort((a, b) => b.sold - a.sold).slice(0, 8);
   const newArrivals = [...allProducts].sort((a, b) => b.createdAt.localeCompare(a.createdAt)).slice(0, 8);
@@ -88,10 +91,12 @@ export default async function Home() {
         <div className="grain absolute inset-0">
           <video
             src={IMAGES.heroVideo}
+            poster={IMAGES.hero}
             autoPlay
             loop
             muted
             playsInline
+            preload="metadata"
             className="absolute inset-0 h-full w-full object-cover object-center md:object-[60%_center]"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-background/85 via-background/25 to-transparent md:from-background/70 md:via-transparent" />
@@ -180,11 +185,12 @@ export default async function Home() {
                   href={`/categoria/${c.slug}`}
                   className="group relative block h-full w-full overflow-hidden bg-cream"
                 >
-                  <img
+                  <Image
                     src={c.image}
                     alt={c.name}
-                    loading="lazy"
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-nawea group-hover:scale-[1.06]"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover transition-transform duration-[1200ms] ease-nawea group-hover:scale-[1.06]"
                   />
                   <div className="absolute inset-0 bg-foreground/0 transition-colors duration-500 group-hover:bg-foreground/10" />
                   <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-4 md:p-6">

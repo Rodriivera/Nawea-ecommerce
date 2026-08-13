@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Heart, Minus, Plus } from "lucide-react";
 import { useState, useMemo } from "react";
 import { SiteLayout } from "@/components/shop/SiteLayout";
@@ -63,10 +64,13 @@ export function ProductDetailView({
         {/* galería */}
         <ScrollReveal variant="slide-left" delay={200} duration={950}>
           <div className="relative aspect-[4/5] overflow-hidden bg-cream lg:aspect-[4/4.6]">
-            <img
+            <Image
               src={gallery[active] || gallery[0] || "/placeholder.jpg"}
               alt={product.name}
-              className="h-full w-full object-cover transition-opacity duration-500"
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 60vw"
+              className="object-cover transition-opacity duration-500"
             />
           </div>
           {gallery.length > 1 && (
@@ -77,12 +81,12 @@ export function ProductDetailView({
                   type="button"
                   onClick={() => setActive(i)}
                   className={cn(
-                    "h-24 w-20 overflow-hidden bg-cream transition-opacity cursor-pointer",
+                    "relative h-24 w-20 overflow-hidden bg-cream transition-opacity cursor-pointer",
                     active === i ? "opacity-100 ring-1 ring-foreground" : "opacity-50",
                   )}
                   aria-label={`Ver imagen ${i + 1}`}
                 >
-                  <img src={g} alt="" loading="lazy" className="h-full w-full object-cover" />
+                  <Image src={g} alt="" fill sizes="80px" className="object-cover" />
                 </button>
               ))}
             </div>

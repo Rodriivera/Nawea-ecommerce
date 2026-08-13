@@ -3,6 +3,21 @@ import { ShopProvider } from "@/store/shop";
 import { Toaster } from "@/components/ui/sonner";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { Bricolage_Grotesque, DM_Sans } from "next/font/google";
+
+const bricolage = Bricolage_Grotesque({
+  subsets: ["latin"],
+  variable: "--font-bricolage",
+  display: "swap",
+  weight: ["400", "700", "800"],
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-dm-sans",
+  display: "swap",
+  weight: ["300", "400", "500"],
+});
 
 export const metadata: Metadata = {
   title: "NAWEA",
@@ -12,14 +27,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="es">
+    <html lang="es" className={`${bricolage.variable} ${dmSans.variable}`}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap"
-        />
         <link rel="icon" href="/nawea.png" type="image/x-icon" />
       </head>
       <body>
@@ -31,3 +40,4 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     </html>
   );
 }
+

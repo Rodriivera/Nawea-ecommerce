@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { SiteLayout } from "@/components/shop/SiteLayout";
 import { CatalogView } from "@/components/shop/CatalogView";
@@ -64,12 +65,13 @@ export default async function CategoryPage({ params }: Props) {
           </ScrollReveal>
         </div>
 
-        <ScrollReveal variant="zoom-in" delay={200} duration={1000} className="mt-12 aspect-[16/7] w-full overflow-hidden bg-cream md:aspect-[16/5]">
-          <img
+        <ScrollReveal variant="zoom-in" delay={200} duration={1000} className="relative mt-12 aspect-[16/7] w-full overflow-hidden bg-cream md:aspect-[16/5]">
+          <Image
             src={category.image}
             alt={`Categoría ${category.name}`}
-            loading="lazy"
-            className="h-full w-full object-cover"
+            fill
+            sizes="100vw"
+            className="object-cover"
           />
         </ScrollReveal>
       </section>

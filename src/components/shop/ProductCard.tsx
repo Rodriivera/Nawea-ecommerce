@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Heart, Plus } from "lucide-react";
 import { useState } from "react";
 import { money } from "@/lib/format";
@@ -43,21 +44,23 @@ export function ProductCard({
         aria-label={product.name}
       >
         <div className={cn("relative overflow-hidden bg-cream", aspect)}>
-          <img
+          <Image
             src={product.image}
             alt={product.name}
-            loading="lazy"
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className={cn(
-              "absolute inset-0 h-full w-full object-cover transition-[opacity,transform] duration-[900ms] ease-nawea",
+              "object-cover transition-[opacity,transform] duration-[900ms] ease-nawea",
               hover ? "scale-[1.04] opacity-0" : "scale-100 opacity-100",
             )}
           />
-          <img
+          <Image
             src={product.altImage}
             alt={`${product.name} — vista alternativa`}
-            loading="lazy"
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className={cn(
-              "absolute inset-0 h-full w-full object-cover transition-all duration-[1000ms] ease-nawea",
+              "object-cover transition-all duration-[1000ms] ease-nawea",
               hover ? "scale-100 opacity-100" : "scale-[1.05] opacity-0",
             )}
           />
