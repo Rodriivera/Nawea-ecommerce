@@ -164,7 +164,7 @@ function AccountContent() {
         <section className="edge flex min-h-[70vh] flex-col items-center justify-center text-center py-20">
           <ScrollReveal variant="fade-up" delay={100} duration={850}>
             <h1 className="display-xl">Mi Cuenta</h1>
-            <p className="mt-4 max-w-sm text-sm text-muted-foreground">
+            <p className="mt-4 max-w-sm text-sm text-muted-foreground mx-auto">
               Iniciá sesión o registrate para gestionar tus datos personales, ver tus pedidos y consultar tus piezas guardadas.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">

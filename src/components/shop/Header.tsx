@@ -136,7 +136,7 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
               FAVORITOS
               {favorites.length > 0 && (
                 <span className="absolute -right-2 -top-1.5 text-[10px] tabular-nums text-accent">
-                  {favorites.length}
+                  
                 </span>
               )}
             </Link>

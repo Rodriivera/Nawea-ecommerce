@@ -59,7 +59,9 @@ function RegisterForm() {
     setGoogleLoading(true);
     setError(null);
 
-    const origin = window.location.origin;
+    const origin = window.location.origin.includes("0.0.0.0")
+      ? window.location.origin.replace("0.0.0.0", "localhost")
+      : window.location.origin;
     const { error: googleError } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {

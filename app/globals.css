@@ -175,7 +175,7 @@
   line-height: 0.8;
   letter-spacing: -0.05em;
   text-transform: uppercase;
-  font-size: clamp(4.5rem, 15vw, 9rem);
+  font-size: clamp(4.5rem, 8vw, 9rem);
 }
 
 @utility display-lg {
